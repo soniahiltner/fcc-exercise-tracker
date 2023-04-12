@@ -9,7 +9,8 @@ const uri = process.env.MONGO_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static("public"));
 app.get("/", (req, res) => {
